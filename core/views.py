@@ -8,6 +8,7 @@ from tensorflow.keras.preprocessing.image import load_img , img_to_array
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.utils.datastructures import MultiValueDictKeyError
+# from keras.models import model_from_json
 # https://im-nanna.tistory.com/27 //MultiValueDictKeyError에 대한 설명
 # https://windybay.net/post/39/
 
@@ -40,9 +41,14 @@ def index(request):
         img = img.astype('float32')
         test_image = img/255.0
 
-        # load model
+        # load model(CNN)
         model = tf.keras.models.load_model(os.getcwd() + '/3rd_cnn_1.h5')
         result = model.predict(test_image)
+
+        # json_file = open("model.json","r")
+        # loaded_model_json = json_file.read()
+        # json_file.close()
+        # loaded_model = model_from_json(loaded_model_json)
 
         # ----------------
         # LABELS
@@ -61,43 +67,10 @@ def index(request):
 
         prediction = np.argmax(result)
         snack_object = Snack.objects.get(id=prediction+1)
-        
+
         name = snack_object.name
         info = snack_object.info
         price = snack_object.price
-            
-        # if (np.argmax(result) == 0):
-        #     prediction = "바나나킥"
-        #     info = "바나나맛이 나는 부드럽고 단 과자입니다."
-        # elif (np.argmax(result) == 1):
-        #     prediction = "포카칩"
-        #     info = "감자맛이 나는 짭조름한 생감자칩입니다."
-        # elif (np.argmax(result) == 2):
-        #     prediction = "화이트하임"
-        #     info = "화이트 초콜릿이 들어가 있는 과자입니다."
-        # elif (np.argmax(result) == 3):
-        #     prediction = "양파링"
-        #     info = "몸에 좋은 양파를 사용하여 링 모양으로 만든 과자입니다."
-        # elif (np.argmax(result) == 4):
-        #     prediction = "오레오"
-        #     info = "초코쿠키에 달콤한 크림을 함께 먹는 맛으로, 아주 단 과자입니다."
-        # elif (np.argmax(result) == 5):
-        #     prediction = "아몬드빼빼로"
-        #     info = "아몬드와 초콜릿을 같이 맛볼 수 있는 롯데의 대표과자입니다."
-        # elif (np.argmax(result) == 6):
-        #     prediction = "후렌치파이"
-        #     info = "딸기맛이 나는 파이 모양의 과자입니다."
-        # elif (np.argmax(result) == 7):
-        #     prediction = "벌집핏자"
-        #     info = "피자를 연상시키는 모양을 가진 과자입니다."
-        # elif (np.argmax(result) == 8):
-        #     prediction = "새우깡"
-        #     info = "실제 새우를 이용하여 만든 짭조름한 과자로, 대한민국 대표 과자 중 하나입니다."
-        # elif (np.argmax(result) == 9):
-        #     prediction = "꼬북칩"
-        #     info = "모양이 거북이 등껍질처럼 생긴 과자입니다."
-        # else:
-        #     prediction = "인식에 실패하였습니다"
       
         snack_name="snack_name.mp3"
         name_tts = gTTS(text="이 상품은 "+ name+"입니다. 가격은 " +str(price)+"원입니다.", lang="ko")
