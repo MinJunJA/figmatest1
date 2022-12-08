@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.allback {
+  width: 100%;
+  height: 1024px;
+  background: url("../images/allback.png");
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+/* ---------------------------------------------------------------------- */
+.headr_side {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  height: 20%;
+}
+.logo {
+  width: 278px;
+  height: 102px;
+  background: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 8%;
+  left: 7%;
+  overflow: hidden;
+}
+.home {
+  width: 80px;
+  height: 80px;
+  background: url("../images/home_icon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 8%;
+  left: 85%;
+  overflow: hidden;
+}
+/* ----------------------------------------------------------------- */
+.info_back {
+  width: 1030px;
+  height: 626px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 27%;
+  left: 12%;
+  /* border: 1px solid rgba(0,0,0,1); */
+  border-top-left-radius: 8%;
+  border-top-right-radius: 8%;
+  border-bottom-left-radius: 8%;
+  border-bottom-right-radius: 8%;
+  overflow: hidden;
+}
+.snackname {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 300px;
+  left: 553px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 45px;
+  opacity: 1;
+  text-align: center;
+}
+.capacity {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 402px;
+  left: 290px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.kcal {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 496px;
+  left: 290px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.carbo {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 590px;
+  left: 290px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.protein {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 684px;
+  left: 290px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.fat {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 778px;
+  left: 290px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.capacity_num {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 402px;
+  left: 698px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.kcal_num {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 496px;
+  left: 698px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.carbo_num {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 590px;
+  left: 698px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.protein_num {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 684px;
+  left: 698px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+.fat_num {
+  width: 291px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 778px;
+  left: 698px;
+  font-family: Noto Sans;
+  font-weight: Display Bold;
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+/* ------------------------------------------------------------- */
+.play_button {
+  width: 100px;
+  height: 100px;
+  background: url("../images/play_icon.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 774px;
+  left: 1038px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+}

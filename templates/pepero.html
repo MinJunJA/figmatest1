@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" />
+        <link href="{% static 'css/banana.css' %}" rel="stylesheet" />
+        <title>BomBom</title>
+        <link rel="icon" sizes="10x10" href="{% static 'images/search_icon.png' %}">
+    </head>
+
+<body>
+    <div class="allback">
+        <div class="header_side">
+            <a href="/" class="logo"></a>
+            <a href="/" class="home"></a>
+        </div>
+        <div class="info_back"></div>
+        <span class="snackname">아몬드빼빼로</span>
+        <span class="capacity">총 내용량(g)</span>
+        <span class="kcal">에너지(kcal)</span>
+        <span class="carbo">탄수화물(mg)</span>
+        <span class="protein">단백질(g)</span>
+        <span class="fat">지방(g)</span>
+        <span class="capacity_num">37g</span>
+        <span class="kcal_num">205kcal</span>
+        <span class="carbo_num">20mg</span>
+        <span class="protein_num">4g</span>
+        <span class="fat_num">12g</span>
+    </div> 
+
+<!-- 버튼에 음성 넣기  -->
+<script>
+    var audio = new Audio("{% static 'pepero.mp3' %}");
+</script>
+
+<input type = "button" onclick="audio.play();" class="play_button">
+
+</body>
+
+</html>

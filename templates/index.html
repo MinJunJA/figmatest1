@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -40,6 +40,22 @@
               </li>
           </ul>
       </div>
+      <section class="hero">
+        <div class="container">
+          <div class="row">
+            <div class="col-9">
+              <div class="headline" id="headline">
+                <h1 class="text-white mb-3 align-items-center">과자 이미지를 준비해주세요</h1>
+                <p class="text-white-50 mb-3 align-items-center">상품을 잘 보이게 찍을수록 올바르게 판독할 확률이 높습니다</p>  
+              </div>
+                
+            </div>
+            <div class="col-3 align-items-center">
+              <button id="btn-read">안내음성 듣기</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </header>
 
     <form method="POST" enctype="multipart/form-data">
@@ -55,12 +71,6 @@
         업로드
       </button>
 
-      <!-- <div class="buttons">
-        <button onclick="startWebcam()">캠 열기</button>
-        <button onclick="stopWebcam()">캠 닫기</button>
-      </div>
-      <video id="webcam-id" autoplay="true"></video> -->
-
       <div class="status">
         <p id="message">{{ message }}</p>
       </div>
@@ -73,56 +83,82 @@
         width="400px"
       />
 
-      <div class="info_container">
+      <!-- <div class="info_container">
         <ul>
           <li>파일명: <span class="name">{{ image.name }}</span></li>
-          <li>상품 예측 결과: <span class="type">{{ name }}</span></li>
-          <li>상품명 듣기 👇👇</li>
-          <audio autoplay controls>
+          <li>이름 & 가격: <span id="snack">이 상품은 {{name}}입니다. 가격은 {{price}}원입니다.</span></li>
+          <li>상품 정보: <span id="info">{{info}} 상품의 총량은 {{total_content}}그램이며, 칼로리는 {{calories}} 칼로리입니다.</span></li>
+          
+            <audio autoplay controls>
             <source src="{% static 'snack_name.mp3' %}" type="audio/mp3">
-          </audio>
-          <li>상품 정보 👇👇</li>
-          <audio controls>
+          </audio> -->
+          <!-- <li>음성 서비스👇👇</li>
+          <button id="nameBtn">이름 & 가격</button>
+          <button id="infoBtn">상품 정보</button> -->
+          <!-- <audio controls>
             <source src="{% static 'snack_info.mp3' %}" type="audio/mp3">
-          </audio>
+          </audio> -->
         </ul>
       </div>
-    </div>
+    </div> -->
 
-    <div class="header">
-      <h4><span>과자 이미지 </span>예측하기</h4>      
+    <!-- <div class="header">
+      <h4>과자 이미지 예측하기</h4>      
     </div>
     <div class="footer">
       © <a href='https://kr.123rf.com/profile_captainvector'>captainvector</a>, <a href='https://www.123rf.com/free-images/'>123RF Free Images</a>
-    </div>
-    
-
+    </div> -->
     <script src="{% static 'js/main.js' %}"></script>
     <script>
-      const videoEl = document.getElementById("webcam-id");
-      const startWebcam = () =>{
-        if(navigator.mediaDevices.getUserMedia){
-          navigator.mediaDevices //카메라 권한 정보 호출
-          .getUserMedia({video:true})
-          .then(stream =>{
-            videoEl.srcObject = stream;
+      function speak(text, opt_prop) {
+          if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
+              alert("이 브라우저는 음성 합성을 지원하지 않습니다.")
+              return
+          }
+          
+          window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
+
+          const prop = opt_prop || {}
+
+          const speechMsg = new SpeechSynthesisUtterance()
+          speechMsg.rate = prop.rate || 10 // 속도: 0.1 ~ 10      
+          speechMsg.pitch = prop.pitch || 1 // 음높이: 0 ~ 2
+          speechMsg.lang = prop.lang || "ko-KR"
+          speechMsg.text = text
+          
+          // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
+          window.speechSynthesis.speak(speechMsg)
+      }
+      // 이벤트 영역
+      
+      const headline = document.getElementById("headline")
+      const btnRead = document.getElementById("btn-read")
+      const infoBtn = document.getElementById("infoBtn")
+      const nameBtn = document.getElementById("nameBtn")
+
+      btnRead.addEventListener("click", e => {
+          speak(headline.textContent, {
+              rate: 0.8,
+              pitch: 1,
+              lang: "ko-KR"
           })
-          .catch((err)=>{
-            console.log("카메라를 가져오지 못했습니다...",err);
-          });
-        }
-      };
+      })
 
-      const stopWebcam = () =>{
-        const stream = videoEl.srcObject;
-        const tracks = stream.getTracks();
+      // infoBtn.addEventListener("click", e => {
+      //     speak(info.textContent, {
+      //         rate: 0.8,
+      //         pitch: 1,
+      //         lang: "ko-KR"
+      //     })
+      // })
 
-        for(let i=0;i<tracks.length;i++){
-          const track = tracks[i]
-          track.stop()
-        }
-        videoEl.srcObject=null;
-      };
+      // nameBtn.addEventListener("click", e => {
+      //     speak(snack.textContent, {
+      //         rate: 0.8,
+      //         pitch: 1,
+      //         lang: "ko-KR"
+      //     })
+      // })
     </script>
   </body>
 </html>

@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Saira&display=swap" rel="stylesheet" />
+        <link href="{% static 'css/snack.css' %}" rel="stylesheet" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="v1_21">
+            <div class="v1_22">
+              <img
+              src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+              alt="Compressed Image"
+              width="500px"
+            />
+            </div>
+            <div class="v1_23">
+                <div class="v1_24">
+                  <ul>
+                    <li>이름 & 가격: <span id="snack">이 상품은 {{name}}입니다. 가격은 {{price}}원입니다.</span></li>
+                    <li>상품 정보: <span id="info">{{info}} 상품의 총량은 {{total_content}}그램이며, 칼로리는 {{calories}} 칼로리입니다.</span></li>
+                    <!-- <audio autoplay controls>
+                      <source src="{% static 'snack_name.mp3' %}" type="audio/mp3">
+                    </audio> -->
+                    <button type = "button" class = "btm_image" id="nameBtn"><img src = "{% static 'images/ss.png' %}"
+                      style = "width:150px; height: 150px;"></button>
+                      <button type = "button" class = "btm_image" id="infoBtn"><img src = "{% static 'images/ss.png' %}"
+                        style = "width:150px; height: 150px;"></button>
+                        <button type = "button" class = "btm_image" id="nameBtn"><img src = "{% static 'images/back.png' %}"
+                          onclick = "location.href = '/'"
+                          style = "width:150px; height: 150px;"></button>
+                    <!-- <audio controls>
+                      <source src="{% static 'snack_info.mp3' %}" type="audio/mp3">
+                    </audio> -->
+                  </ul>
+                </div>
+            </div>
+            <div class="v1_31">
+                <div class="name"></div>
+            </div>
+                <div class="v1_34">
+                    <div class="v1_35">
+
+                    </div>
+                    <button type = "button" class="v1_36"
+                        onclick = "location.href = 'http://127.0.0.1:8000/snack/'">영양성분정보</button>
+                </div>
+                <div class="v1_37">
+                </div>
+                <a href = "/" class="v1_38">
+                  </a>
+
+                </div>
+            </div>
+            <script>
+              function speak(text, opt_prop) {
+                  if (typeof SpeechSynthesisUtterance === "undefined" || typeof window.speechSynthesis === "undefined") {
+                      alert("이 브라우저는 음성 합성을 지원하지 않습니다.")
+                      return
+                  }
+                  
+                  window.speechSynthesis.cancel() // 현재 읽고있다면 초기화
+        
+                  const prop = opt_prop || {}
+        
+                  const speechMsg = new SpeechSynthesisUtterance()
+                  speechMsg.rate = prop.rate || 0.7 // 속도: 0.1 ~ 10      
+                  speechMsg.pitch = prop.pitch || 1 // 음높이: 0 ~ 2
+                  speechMsg.lang = prop.lang || "ko-KR"
+                  speechMsg.text = text
+                  
+                  // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
+                  window.speechSynthesis.speak(speechMsg)
+              }
+              // 이벤트 영역
+              
+              const headline = document.getElementById("headline")
+              const btnRead = document.getElementById("btn-read")
+              const infoBtn = document.getElementById("infoBtn")
+              const nameBtn = document.getElementById("nameBtn")
+              const v1_32 = document.getElementById("v1_32")
+        
+              // btnRead.addEventListener("click", e => {
+              //     speak(headline.textContent, {
+              //         rate: 0.9,
+              //         pitch: 1.0,
+              //         lang: "ko-KR"
+              //     })
+              // })
+        
+              infoBtn.addEventListener("click", e => {
+                  speak(info.textContent, {
+                      rate: 0.9,
+                      pitch: 1.0,
+                      lang: "ko-KR"
+                  })
+              })
+        
+              nameBtn.addEventListener("click", e => {
+                  speak(snack.textContent, {
+                      rate: 0.9,
+                      pitch: 1.0,
+                      lang: "ko-KR"
+                  })
+              })
+
+              button.addEventListener("click", e => {
+                  speak(snack.textContent, {
+                      rate: 0.9,
+                      pitch: 1.0,
+                      lang: "ko-KR"
+                  })
+              })
+            </script>
+            <script src="{% static 'js/main.js' %}"></script>
+          </body>
+        </html>

@@ -1,0 +1,94 @@
+body {
+    background-image: url("../images/background.png");
+    background-color: black;
+    background-size: cover;
+}
+
+/*header 부분 css*/
+.headr_side {
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    height: 20%;
+
+  }
+
+.logo {
+    width: 278px;
+    height: 102px;
+    background: url("../images/bombom_logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 8%;
+    left: 7%;
+    overflow: hidden;
+  }
+
+.home {
+width: 80px;
+height: 80px;
+background: url("../images/home.png");
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+opacity: 1;
+position: absolute;
+top: 8%;
+right: 10%;
+overflow: hidden;
+}
+
+/*프로필 리스트*/
+.item_list {
+  text-align: center;
+  position: absolute;
+  height: 450px;
+  width: 1000px;
+  left: 50%;
+  top: 50%;
+  margin: -150px 0px 0px -500px;
+}
+
+.card {
+  text-align: center;
+  display: inline-block;
+  height: 210px;
+  width: 300px;
+  background-color: rgba(255, 255, 255,0.7);
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+}
+
+
+/*조원 별로 6개 만들기...*/
+.profile_img {
+  display: inline-block;
+  width: 140px;
+  height: 180px;
+  background-image: url("../images/profile.png");
+  background-size: cover;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.introduce {
+  display: inline-block;
+  width: 150px;
+  height: 180px;
+  position:absolute;
+  margin-top: 14px;
+  vertical-align: middle;
+}
